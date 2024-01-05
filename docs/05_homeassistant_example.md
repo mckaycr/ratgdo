@@ -44,7 +44,7 @@ The following dry contact statuses are available:
 - `obs` - pulled to ground if the door is obstructed, open circuit if clear.
 
 ### Notes
-<sup>1</sup> Repeated open commands (or repeated close commands) will be ignored. This provides discrete open/close control over the door, which is better than a toggle.
+<sup>1 Repeated open commands (or repeated close commands) will be ignored. This provides discrete open/close control over the door, which is better than a toggle.</sup>
 
 ## MQTT
 ### Home Assistant Auto Discovery
