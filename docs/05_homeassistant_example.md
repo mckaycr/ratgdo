@@ -19,7 +19,7 @@ _For the time being, avoid using this firmware if your Chamberlain Liftmaster ha
 
 Here you will find a ESPHome port of ratgdo available. However, it may not be fully compatible with the MQTT version of ratgdo at the moment.
 
-To get started, use the [Web Tools installer](https://ratgdo.github.io/esphome-ratgdo/) to flash your ratgdo. Additional documentation can be found on the [GitHub Repo](https://github.com/ratgdo/esphome-ratgdo).
+To get started, use the [Web Tools installer](https://ratgdo.github.io/esphome-ratgdo/) to flash your ratgdo. Additional documentation can be found on the [GitHub Repo](https://github.com/ratgdo/esphome-ratgdo).  The installer will flash the ESPHome firmware on to your device, it will allow you to add the device to your wifi, and start the adoption process for HomeAssistant.
 
 ### Dry Contacts
 #### Triggers
