@@ -7,7 +7,7 @@
 * [Home Assistant Example](05_homeassistant_example.md)
 * [FAQ & Troubleshooting](09_faq.md)
 
-## Home Assistant Example
+# Home Assistant Example
 If you're using Home Assistant, there are a couple of options for integration:
 
 1. [ESP Home](http://github.com/ratgdo/esphome-ratgdo): The ESP Home version of ratgdo is directly adoptable by your Home Assistant instance.
@@ -15,7 +15,7 @@ If you're using Home Assistant, there are a couple of options for integration:
 
 Before making a choice, review the [features matrix](https://paulwieland.github.io/ratgdo/01_features.html). Not all options are available for every garage door opener, and using the wrong one may result in random operations with your garage door.
 
-### ESPHome
+## ESPHome
 _For the time being, avoid using this firmware if your Chamberlain Liftmaster has the purple, red, or orange learn buttons._
 
 There is an ESPHome port of ratgdo available. However, it may not be fully compatible with the MQTT version of ratgdo at the moment.
