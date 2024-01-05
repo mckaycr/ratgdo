@@ -8,10 +8,117 @@ TOC
 * [FAQ & Troubleshooting](09_faq.md)
 
 # Home Assistant Example
-If you are using Home Assistant, there is an [ESP Home](http://github.com/ratgdo/esphome-ratgdo) version of ratgdo. This version is directly adoptable by your Home Assistant instance.
+If you are using Home Assistant, there are a couple options for integration.
+  1. [ESP Home](http://github.com/ratgdo/esphome-ratgdo) version of ratgdo. This version is directly adoptable by your Home Assistant instance.
+  2. [MQTT Integration](https://paulwieland.github.io/ratgdo/flash.html) version.  If you are using Home Assistant and have an MQTT broker setup, then HA will automatically discover ratgdo’s door, light and obstruction sensors after configuration.
 
-You can also integrate with Home Assitant through MQTT. Since version 1.7, ratgdo has home assistant auto discovery over MQTT. When ratgdo boots, three discovery messages are sent via mqtt which will add a door, light and obstruction sensor entities under a single device in Home Assistant.
+Ensure you review the [features matrix](https://paulwieland.github.io/ratgdo/01_features.html) before selecting an option.  Not all options are available for every garage door opener.
 
-There is also a link to the ratgdo configuration page from within the Home Assistant UI.
+### ESPHome
+There is an ESPHome port of ratgdo available. For the time being this port might not be feature compatible with the MQTT version of ratgdo.
 
-In the ratgdo configuration page, there is a place to change the Home Assistant auto discovery prefix. The default is `homeassistant` which is the what HA uses out of the box. You have to change this setting to match your Home Assistant's prefix if you have modified the standard value in HA's MQTT integration settings.
+* [Web Tools installer](https://ratgdo.github.io/esphome-ratgdo/)
+* [GitHub Repo](https://github.com/ratgdo/esphome-ratgdo)
+
+
+### Dry contacts
+
+#### Triggers
+##### Chamberlain / Liftmaster openers
+When using either Security + 1.0 or Security + 2.0 door opener, ratgdo's dry contact triggers can be pulled to ground to trigger the door opener as follows:
+
+* open<sup>1</sup> - opens the door.
+* close<sup>1</sup> - closes the door.
+* light - toggles the light on or off.
+
+##### Other openers
+When using a door opener that supports standard dry contact control (door bell style), the trigger inputs are used to detect the door state.
+For these openers connect as follows:
+
+* trigger open terminal - wire to door open limit switch
+* trigger close terminal - wire to door closed limit switch
+
+Wire it in such a way that the trigger input is connected with ground when the limit switch is closed. Some door openers (e.g. Genie) have screw terminals on them for each limit switch in addition to the control terminal for opening the door. If your opener doesn't expose its internal limit switches to user accessible terminals you can add simple reed switches to the door track to detect it's state.
+
+With these two limit switches connected, ratgdo can detect all four door states (closed, opening, open, closing).
+
+#### Statuses
+The following dry contact statuses are available:
+
+* door - pulled to ground if the door is open, open circuit if closed.
+* obs - pulled to ground if the door is obstructed, open circuit if clear.
+
+
+### Notes
+1. <sup>1</sup> Repeated open commands (or repeated close commands) will be ignored. This gives discrete open/close control over the door which is better than a toggle.
+
+### MQTT
+
+#### Home Assistant Auto Discovery
+If you are using Home Assistant and have an MQTT broker setup, then HA will automatically discover ratgdo's door, light and obstruction sensors after it boots up.
+
+When ratgdo boots up after being configured, it broadcasts the necessary discovery messages that tell Home Assistant what it is and how to communicate with it.
+
+See [Home Assistant](05_homeassistant_example.md) for more information.
+
+#### Triggers
+The following MQTT commands are supported:
+
+* command/door:open - opens the door.
+* command/door:close - closes the door.
+* command/light:on - turns the light on.
+* command/light:off - turns the light off.
+* command/lock:lock - locks out the wiresss remotes.
+* command/lock:unlock - unlocks the use of wireless remotes.
+* command:query - queries the door opener for current status.
+
+##### Examples
+
+If:
+
+* Device Name = "MyGarageDoor"
+* mqtt Prefix = "home/garage"
+
+Then:
+
+* mqtt.topic = "home/garage/MyGarageDoor/command/door"; mqtt.payload = "open"; - opens the door
+* mqtt.topic = "home/garage/MyGarageDoor/command/door"; mqtt.payload = "close"; - closes the door
+
+
+#### Statuses
+The following statuses are broadcast over MQTT:
+
+<ul>
+	<li>prefix/status/availability
+		<ul>
+			<li>online - once ratgdo connects to the MQTT broker.</li>
+			<li>offline - the mqtt last will message which is broadcast by the broker when the ratgdo client loses its connection.</li>
+		</ul>
+	</li>
+	<li>prefix/status/obstruction
+		<ul>
+			<li>obstructed - when an object breaks the obstruction sensor beam.</li>
+			<li>clear - when an obstruction is cleared.</li>
+		</ul>
+	</li>
+	<li>prefix/status/door
+		<ul>
+			<li>opening - when the door is opening.</li>
+			<li>open - when the door is fully open.</li>
+			<li>closing - when the door is closing.</li>
+			<li>closed - when the door is fully closed.</li>
+		</ul>
+	</li>
+	<li>prefix/status/light
+		<ul>
+			<li>on - when the light is on</li>
+			<li>off - when the light is off</li>
+		</ul>
+	</li>
+	<li>prefix/status/lock
+		<ul>
+			<li>locked - when the door opener is locked</li>
+			<li>unlocked - when unlocked</li>
+		</ul>
+	</li>
+</ul>
