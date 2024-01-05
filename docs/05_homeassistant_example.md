@@ -17,7 +17,7 @@ Before making a choice, review the [features matrix](https://paulwieland.github.
 ## ESPHome
 _For the time being, avoid using this firmware if your Chamberlain Liftmaster has the purple, red, or orange learn buttons._
 
-There is an ESPHome port of ratgdo available. However, it may not be fully compatible with the MQTT version of ratgdo at the moment.
+Here you will find a ESPHome port of ratgdo available. However, it may not be fully compatible with the MQTT version of ratgdo at the moment.
 
 To get started, use the [Web Tools installer](https://ratgdo.github.io/esphome-ratgdo/) to flash your ratgdo. Additional documentation can be found on the [GitHub Repo](https://github.com/ratgdo/esphome-ratgdo).
 
