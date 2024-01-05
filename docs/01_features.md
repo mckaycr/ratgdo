@@ -1,15 +1,17 @@
 #### Table of Contents
-* [Main](index.md)
-* [Features](01_features.md)
-* [Configuration](02_configuration.md)
-* [Wiring](03_wiring.md)
-* [NodeRED MQTT / HomeKit Example](04_nodered_example.md)
-* [Home Assistant Example](05_homeassistant_example.md)
-* [FAQ & Troubleshooting](09_faq.md)
+- [Main](index.md)
+- [Features](01_features.md)
+- [Configuration](02_configuration.md)
+- [Wiring](03_wiring.md)
+- [NodeRED MQTT / HomeKit Example](04_nodered_example.md)
+- [Home Assistant Example](05_homeassistant_example.md)
+- [FAQ & Troubleshooting](09_faq.md)
 # Features
 If you have a security + 2.0 door opener, or a security + 1.0 opener with a compatible wall control panel, ratgdo detects the garage door's position (opening, open, closing, closed) from the encrypted signal wire. No soldering or additional sensors are required to get the door status. Three simple wires (Ground, Control, and Obstruction) are connected to the terminals of the garage door opener.
 
 If you have a dry contact control door opener (e.g., Genie, old Chamberlain, etc.), then ratgdo can control your door and detect the door's position using two simple reed switches (not included).
+
+Additionally ratgdo interfaces with Home Assistant, NodeRed, and HomeKit
 
 ## Feature Matrix
 The features supported depend on the type of garage door opener you have and the firmware you are using. This table is meant to help clarify what features work with which opener.
