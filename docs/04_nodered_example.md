@@ -1,13 +1,11 @@
-TOC
-* [Main](index.md)
-* [Features](01_features.md)
-* [Configuration](02_configuration.md)
-* [Wiring](03_wiring.md)
-* [NodeRED MQTT / HomeKit Example](04_nodered_example.md)
-* [Home Assistant Example](05_homeassistant_example.md)
-* [FAQ & Troubleshooting](09_faq.md)
-
-
+#### Table of Contents
+- [Main](index.md)
+- [Features](01_features.md)
+- [Configuration](02_configuration.md)
+- [Wiring](03_wiring.md)
+- [NodeRED MQTT / HomeKit Example](04_nodered_example.md)
+- [Home Assistant Example](05_homeassistant_example.md)
+- [FAQ & Troubleshooting](09_faq.md)
 # NodeRED Example
 These examples show how to interface ratgdo to Apple's HomeKit using the [NRCHKB](https://nrchkb.github.io) homekit node for [NodeRED](https://nodered.org). The process for Google Home would be similar - if anyone wishes to share an example, please submit a pull request.
 
