@@ -26,8 +26,8 @@ There is an ESPHome port of ratgdo available. For the time being, this port migh
 ##### Chamberlain / Liftmaster openers
 When using either Security + 1.0 or Security + 2.0 door opener, ratgdo's dry contact triggers can be pulled to ground to trigger the door opener as follows:
 
-- `open^1` - opens the door.
-- `close^1` - closes the door.
+- `open`<sup>1</sup> - opens the door.
+- `close`<sup>1</sup> - closes the door.
 - `light` - toggles the light on or off.
 
 ##### Other openers
@@ -47,7 +47,7 @@ The following dry contact statuses are available:
 - `obs` - pulled to ground if the door is obstructed, open circuit if clear.
 
 ### Notes
-1. `^1` Repeated open commands (or repeated close commands) will be ignored. This gives discrete open/close control over the door, which is better than a toggle.
+<sup>1</sup> Repeated open commands (or repeated close commands) will be ignored. This gives discrete open/close control over the door, which is better than a toggle.
 
 ### MQTT
 #### Home Assistant Auto Discovery
