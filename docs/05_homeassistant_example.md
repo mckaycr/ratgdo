@@ -99,6 +99,7 @@ If:
 - Device Name = "MyGarageDoor"
 - Ratgdo Configuration MQTT Prefix = "garage"
 - HA Discovery Prefix = "homeassistant"
+  
 Then:
 - `mqtt.topic = "homeassistant/garage/MyGarageDoor/command/door"; mqtt.payload = "open";` - opens the door
 - `mqtt.topic = "homeassistant/garage/MyGarageDoor/command/door"; mqtt.payload = "close";` - closes the door
